@@ -1,0 +1,5 @@
+#! /bin/bash
+for recording in /nas/GameRecordings/non-Backuped/Painchilla/*.mkv
+do
+ffmpeg -y -i $recording -preset medium -map 0:v -vcodec libx265 -bf 4 -b_strategy 2 -c:a copy -map 0:a -crf 24 "/nas/GameRecordings/Painchilla/Aufnahmen/"$(basename $recording) && rm $recording
+done
