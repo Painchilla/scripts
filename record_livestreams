@@ -1,0 +1,4 @@
+#! /bin/bash
+#date=$(date +%F-%T)
+#touch /nas/GameRecordings/Painchilla/Streams
+ffmpeg -i "rtmp://localhost:1935/live/test" -preset medium -b:a 128k -vf scale=1600:-1:lanczos -r 30 -vcodec libx264 -threads 12 -pix_fmt yuv420p -level 5 -c:a aac  -f flv -b:v 6000k -maxrate 6600k -minrate 5400k -bufsize 1500k "/nas/GameRecordings/Painchilla/Streams/$(date +%F-%T).flv"
